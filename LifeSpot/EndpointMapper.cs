@@ -1,11 +1,8 @@
 ﻿using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace LifeSpot
 {
@@ -54,6 +51,7 @@ namespace LifeSpot
         {
             string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
             string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sidebar.html"));
+            string sliderHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "slider.html"));
 
             builder.MapGet("/", async context =>
             {
@@ -87,7 +85,9 @@ namespace LifeSpot
                 // Загружаем шаблон страницы, вставляя в него элементы
                 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                     .Replace("<!--SIDEBAR-->", sideBarHtml)
-                    .Replace("<!--FOOTER-->", footerHtml);
+                    .Replace("<!--FOOTER-->", footerHtml)
+                    // Добавим для загрузки слайдера
+                   .Replace("<!--SLIDER-->", sliderHtml);
 
                 await context.Response.WriteAsync(html.ToString());
             });
