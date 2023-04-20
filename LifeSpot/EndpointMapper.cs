@@ -86,11 +86,30 @@ namespace LifeSpot
                 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
                     .Replace("<!--SIDEBAR-->", sideBarHtml)
                     .Replace("<!--FOOTER-->", footerHtml)
-                    // Добавим для загрузки слайдера
+                   // Добавим для загрузки слайдера
                    .Replace("<!--SLIDER-->", sliderHtml);
 
                 await context.Response.WriteAsync(html.ToString());
             });
+        }
+
+        /// <summary>
+        /// Маппинг изображений
+        /// </summary>
+        /// <param name="builder"></param>
+        public static void MapImages(this IEndpointRouteBuilder builder)
+        {
+            var imgFiles = new[] { "spb.jpg", "ny.jpg", "london.jpg" };
+
+            foreach (var fileName in imgFiles)
+            {
+                builder.MapGet($"/Static/Images/{fileName}", async context =>
+                {
+                    var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Images", fileName);
+                    var js = await File.ReadAllTextAsync(jsPath);
+                    await context.Response.WriteAsync(js);
+                });
+            }
         }
     }
 }
