@@ -105,9 +105,9 @@ namespace LifeSpot
             {
                 builder.MapGet($"/Static/Images/{fileName}", async context =>
                 {
-                    var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Images", fileName);
-                    var js = await File.ReadAllTextAsync(jsPath);
-                    await context.Response.WriteAsync(js);
+                    var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "Images", fileName);
+                    var image = await File.ReadAllBytesAsync(imgPath);
+                    await context.Response.Body.WriteAsync(image);
                 });
             }
         }

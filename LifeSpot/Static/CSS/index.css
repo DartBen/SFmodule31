@@ -87,3 +87,34 @@ header, footer, body, .video-container {
     padding-top: 1%;
     padding-bottom: 1%;
 }
+
+.slider {
+    position: relative;
+    object-fit: initial;
+    height: 250px;
+}
+.sliderImageBlock{
+    width: 80%; /* Ширина области */
+    height: 250px; /* Высота области */
+    display:block;
+}
+.sliderImage {
+    width: 71%; /* Ширина изображений */
+    height: 100%; /* Высота изображении */
+    object-fit: cover;
+}
+
+.slider button {
+    position: absolute;
+    background-color: transparent;
+    border:none;
+    font-size: 3em;
+    color:red;
+    cursor: pointer;
+    top:45%;
+    left:0%;
+    z-index:3;
+}
+#btnRight{
+    left:52%;
+}
