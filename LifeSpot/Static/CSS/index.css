@@ -92,6 +92,7 @@ header, footer, body, .video-container {
     position: relative;
     object-fit: initial;
     height: 250px;
+    width: 700px;
 }
 .sliderImageBlock{
     width: 80%; /* Ширина области */
@@ -99,7 +100,7 @@ header, footer, body, .video-container {
     display:block;
 }
 .sliderImage {
-    width: 71%; /* Ширина изображений */
+    width: 620px; /* Ширина изображений */
     height: 100%; /* Высота изображении */
     object-fit: cover;
 }
@@ -107,7 +108,7 @@ header, footer, body, .video-container {
 .slider button {
     position: absolute;
     background-color: transparent;
-    border:none;
+    /*border:none;*/
     font-size: 3em;
     color:red;
     cursor: pointer;
@@ -116,5 +117,5 @@ header, footer, body, .video-container {
     z-index:3;
 }
 #btnRight{
-    left:52%;
+    left:549px;
 }
